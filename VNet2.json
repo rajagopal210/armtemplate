@@ -1,0 +1,54 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "variables": {
+        "name": "VNet2",
+        "resourceGroup": "RG1",
+        "location": "westus2",
+        "addressPrefix": "192.168.5.0/24",
+        "subnet1Name": "Subnet1",
+        "subnet1AddressPrefix": "192.168.5.32/27",
+		"subnet2Name": "Subnet2",
+        "subnet2AddressPrefix": "192.168.5.64/27",
+		"subnet3Name": "Subnet3",
+        "subnet3AddressPrefix": "192.168.5.96/27",
+        },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "name": "[variables('name')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "[variables('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('addressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnet1Name')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnet1AddressPrefix')]",
+                            "addressPrefixes": []
+                        }
+                    },
+					{
+                        "name": "[variables('subnet2Name')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnet2AddressPrefix')]",
+                            "addressPrefixes": []
+                        }
+                    },
+					{
+                        "name": "[variables('subnet3Name')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnet3AddressPrefix')]",
+                            "addressPrefixes": []
+                        }
+                    }
+                ],
+            }
+        }
+    ]
+}
